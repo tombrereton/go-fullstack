@@ -12,7 +12,6 @@ func executeRequest(req *http.Request, s *Server) *httptest.ResponseRecorder {
 	return rr
 }
 
-
 func TestWebServer(t *testing.T) {
 	s := NewWebServer()
 	s.MountMiddleware()
@@ -22,7 +21,7 @@ func TestWebServer(t *testing.T) {
 
 	response := executeRequest(req, s)
 	got := response.Body.String()
-	want := `<h1>Hello, World!</h1>`
+	want := `<h1>Hello, Hot Reloading!</h1>`
 
 	if got != want {
 		t.Errorf("Expected response body to be %s. Got %s\n", want, got)
