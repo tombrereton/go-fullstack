@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "watch:tailwind": "npx tailwindcss -i ./cmd/web/static/css/main.css -o .cmd/web/static/styles.css --watch",
+    "watch:tailwind": "npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --watch",
     "watch:go": "air",
     "start": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\""
   },
