@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -40,5 +41,13 @@ func (s *Server) MountStaticFiles() {
 }
 
 func (s *Server) HomePageHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("<h1>Hello, World!</h1>"))
+	tmpl, err := template.ParseFiles("./templates/landing.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
