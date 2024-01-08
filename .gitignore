@@ -24,3 +24,4 @@ tmp
 
 # node
 node_modules/
+**/styles.css

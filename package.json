@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "watch:tailwind": "npx tailwindcss -i ./cmd/web/static/css/main.css -o .cmd/web/static/styles.css --watch",
+    "watch:go": "air",
+    "start": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "tailwindcss": "^3.4.1"
+  }
+}
