@@ -1,5 +1,5 @@
 # Go Hot Reload
-A Go web application with hot reload for Tailwind
+A Go web application with hot reload for html and tailwind.
 
 # Run
 Go-Hot-Reload uses 2 commands `air` and `npx tailwind`, to rebuild the files
