@@ -40,6 +40,4 @@ We welcome contributions from the community. Here are some guidelines to help yo
 5. **Test Your Changes**: Ensure that your changes do not break any existing functionality.
 6. **Submit a Pull Request**: Push your branch to your fork on GitHub and submit a pull request.
 
-For more detailed information, check out our contribution guidelines in the `CONTRIBUTING.md` file.
-
 Thank you for considering to contribute to Go Hot Reload! Your efforts help make this project even better.
