@@ -5,6 +5,7 @@ go 1.21.5
 require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/go-chi/chi/v5 v5.0.11
+	github.com/kelseyhightower/envconfig v1.4.0
 )
 
 require (
