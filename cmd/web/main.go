@@ -21,7 +21,7 @@ func main() {
 	}
 
 	server := server.NewWebServer(&cfg)
-	address := "localhost:3000"
+	address := "localhost:" + cfg.Port
 	log.Default().Printf("Listening at http://%s", address)
 	http.ListenAndServe(address, server.Router)
 }

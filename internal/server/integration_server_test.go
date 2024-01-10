@@ -10,7 +10,7 @@ import (
 )
 
 func TestIntegrationWebServer(t *testing.T) {
-	config := Config{IsDevelopment: false, TemplatesPath: "../../templates/"}
+	config := Config{IsDevelopment: false, TemplateDir: "../../templates/", Port: "3000"}
 	app := NewWebServer(&config)
 	ts := httptest.NewServer(app.Router)
 	defer ts.Close()

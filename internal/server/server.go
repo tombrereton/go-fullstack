@@ -7,7 +7,7 @@ import (
 	"github.com/aarol/reload"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/tombrereton/go-hot-reload/internal/handlers"
+	"github.com/tombrereton/go-hot-reload/internal/routes"
 )
 
 type Server struct {
@@ -15,14 +15,15 @@ type Server struct {
 	Config *Config
 }
 
-func NewWebServer(c *Config) *Server {
-	s := &Server{}
-	s.Router = chi.NewRouter()
+func NewWebServer(cfg *Config) *Server {
+	s := &Server{
+		Router: chi.NewRouter(),
+		Config: cfg,
+	}
+	templates := parseTemplates(s.Config.TemplateDir)
 
-	templates := parseTemplates(c.TemplatesPath)
-
-	if c.IsDevelopment {
-		s.MountHotReload(templates, c)
+	if s.Config.IsDevelopment {
+		s.MountHotReload(templates)
 	}
 	s.MountMiddleware()
 	s.MountStaticFiles()
@@ -30,10 +31,10 @@ func NewWebServer(c *Config) *Server {
 	return s
 }
 
-func (s *Server) MountHotReload(t *template.Template, c *Config) {
-	reload := reload.New(c.TemplatesPath)
+func (s *Server) MountHotReload(t *template.Template) {
+	reload := reload.New(s.Config.TemplateDir, s.Config.StaticDir)
 	reload.OnReload = func() {
-		t = parseTemplates(c.TemplatesPath)
+		t = parseTemplates(s.Config.TemplateDir)
 	}
 	s.Router.Use(reload.Handle)
 }
@@ -43,11 +44,13 @@ func (s *Server) MountMiddleware() {
 }
 
 func (s *Server) MountPageHandlers(t *template.Template) {
-	s.Router.Mount("/", handlers.LandingPageRoutes(t))
+	s.Router.NotFound(routes.NotFound(t))
+	s.Router.Mount("/", routes.LandingPage(t))
 }
 
 func (s *Server) MountStaticFiles() {
-	handler := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
+	fileServer := http.FileServer(http.Dir(s.Config.StaticDir))
+	handler := http.StripPrefix("/static/", fileServer)
 	s.Router.Handle("/static/*", handler)
 }
 

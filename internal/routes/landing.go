@@ -1,4 +1,4 @@
-package handlers
+package routes
 
 import (
 	"html/template"
@@ -11,11 +11,11 @@ type PageVariables struct {
 	Name string
 }
 
-func LandingPageRoutes(t *template.Template) *chi.Mux {
+func LandingPage(t *template.Template) *chi.Mux {
 	r := chi.NewRouter()
+	pageVariable := PageVariables{Name: "Hot Reloading"}
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		pageVariable := PageVariables{Name: "Hot Reloading"}
 		err := t.ExecuteTemplate(w, "landing.html", pageVariable)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
