@@ -2,7 +2,7 @@
   "scripts": {
     "watch:tailwind": "npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --watch",
     "watch:go": "air",
-    "start": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\""
+    "dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
