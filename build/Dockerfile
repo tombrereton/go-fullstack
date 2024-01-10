@@ -4,6 +4,7 @@ FROM node:latest as tailwindbuilder
 WORKDIR /web
 
 COPY static/ ./static/
+COPY templates/ ./templates/
 COPY package*.json .
 COPY tailwind.config.js .
 RUN ls -l /web
@@ -31,7 +32,7 @@ WORKDIR /root/
 
 COPY --from=gobuilder /app/cmd/web/main .
 COPY --from=tailwindbuilder /web/static/ ./static/
-COPY ./templates/ ./templates/
+COPY --from=tailwindbuilder /web/templates/ ./templates/
 
 EXPOSE 3001
 CMD ["./main"]
