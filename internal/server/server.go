@@ -11,8 +11,9 @@ import (
 )
 
 type Server struct {
-	Router *chi.Mux
-	Config *Config
+	Router    *chi.Mux
+	Config    *Config
+	Templates *template.Template
 }
 
 func NewWebServer(cfg *Config) *Server {
@@ -20,21 +21,21 @@ func NewWebServer(cfg *Config) *Server {
 		Router: chi.NewRouter(),
 		Config: cfg,
 	}
-	templates := parseTemplates(s.Config.TemplateDir)
+	s.AddHtmlTemplatesToServer()
 
 	if s.Config.IsDevelopment {
-		s.MountHotReload(templates)
+		s.MountHotReload()
 	}
 	s.MountMiddleware()
 	s.MountStaticFiles()
-	s.MountPageHandlers(templates)
+	s.MountPageHandlers()
 	return s
 }
 
-func (s *Server) MountHotReload(t *template.Template) {
+func (s *Server) MountHotReload() {
 	reload := reload.New(s.Config.TemplateDir, s.Config.StaticDir)
 	reload.OnReload = func() {
-		t = parseTemplates(s.Config.TemplateDir)
+		s.AddHtmlTemplatesToServer()
 	}
 	s.Router.Use(reload.Handle)
 }
@@ -43,9 +44,9 @@ func (s *Server) MountMiddleware() {
 	s.Router.Use(middleware.Logger)
 }
 
-func (s *Server) MountPageHandlers(t *template.Template) {
-	s.Router.NotFound(routes.NotFound(t))
-	s.Router.Mount("/", routes.LandingPage(t))
+func (s *Server) MountPageHandlers() {
+	s.Router.NotFound(routes.NotFound(s.Templates))
+	s.Router.Mount("/", routes.LandingPage(s.Templates))
 }
 
 func (s *Server) MountStaticFiles() {
@@ -54,6 +55,6 @@ func (s *Server) MountStaticFiles() {
 	s.Router.Handle("/static/*", handler)
 }
 
-func parseTemplates(templatePath string) *template.Template {
-	return template.Must(template.ParseGlob(templatePath + "*.html"))
+func (s *Server) AddHtmlTemplatesToServer() {
+	s.Templates = template.Must(template.ParseGlob(s.Config.TemplateDir + "*.html"))
 }
