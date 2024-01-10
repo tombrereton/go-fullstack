@@ -20,6 +20,7 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	log.Default().Printf("Is Development mode enabled: %t", cfg.IsDevelopment)
+	log.Default().Printf("Serving static files from: %s", cfg.StaticDir)
 
 	server := server.NewWebServer(&cfg)
 	address := "localhost:" + cfg.Port
