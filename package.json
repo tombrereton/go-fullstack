@@ -3,6 +3,7 @@
     "watch:tailwind": "npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --watch",
     "watch:go": "air",
     "dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
+    "test": "go test ./..."
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
