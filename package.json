@@ -3,7 +3,10 @@
     "watch:tailwind": "npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --watch",
     "watch:go": "air",
     "dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
-    "test": "go test ./..."
+    "test": "go test ./...",
+    "docker:build": "docker build -f build/Dockerfile -t go-hot-reload .",
+    "docker:run": "docker run --rm -p 3001:3001 --name go-hot-reload-container go-hot-reload",
+    "docker:it": "docker run -it --rm go-hot-reload sh"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

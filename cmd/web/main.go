@@ -11,7 +11,7 @@ import (
 
 func main() {
 	if err := godotenv.Load(); err != nil {
-		log.Fatalf("Error loading .env file: %s", err)
+		log.Default().Println("No .env file found, using environment variables")
 	}
 
 	var cfg server.Config
@@ -23,5 +23,5 @@ func main() {
 	server := server.NewWebServer(&cfg)
 	address := "localhost:" + cfg.Port
 	log.Default().Printf("Listening at http://%s", address)
-	http.ListenAndServe(address, server.Router)
+	http.ListenAndServe(":"+cfg.Port, server.Router)
 }
