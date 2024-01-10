@@ -10,7 +10,7 @@ import (
 func Htmx(t *template.Template) *chi.Mux {
 	r := chi.NewRouter()
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/clicked", func(w http.ResponseWriter, r *http.Request) {
 		err := t.ExecuteTemplate(w, "htmx-demo.html", nil)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
