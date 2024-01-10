@@ -6,6 +6,11 @@
 
 Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, HTML and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
 
+## Hosting
+I recommend hosting for free on https://fly.io/.
+
+The first 3 `shared-cpu-1x@256MB` VMs are free and you can deploy docker images easily.
+
 ## Features
 
 - 🔄 **Live Reloading**: Automatic Go rebuild using [`air`](https://github.com/cosmtrek/air). Configured in `.air.toml`.
