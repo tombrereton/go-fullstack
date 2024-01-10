@@ -6,6 +6,8 @@
 
 Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, HTML and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
 
+Note: while it pushes changes to the browser it will reset the state, so it's not true hot reloading but it's close.
+
 ## Hosting
 I recommend hosting for free on https://fly.io/.
 
