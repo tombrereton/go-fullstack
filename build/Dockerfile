@@ -9,7 +9,7 @@ COPY package*.json .
 COPY tailwind.config.js .
 RUN ls -l /web
 RUN npm install 
-RUN npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css
+RUN npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --minify
 
 # Go build stage
 FROM golang:latest as gobuilder
