@@ -47,6 +47,7 @@ func (s *Server) MountMiddleware() {
 func (s *Server) MountPageHandlers() {
 	s.Router.NotFound(routes.NotFound(s.Templates))
 	s.Router.Mount("/", routes.LandingPage(s.Templates))
+	s.Router.Mount("/clicked", routes.Htmx(s.Templates))
 }
 
 func (s *Server) MountStaticFiles() {
