@@ -24,8 +24,8 @@ Go Hot Reload is an open-source starter template, designed to streamline the dev
    ```
    PORT=3000
    IS_DEVELOPMENT=true
-   TEMPLATES_DIR=templates/
-   STATIC_DIR=./static
+   TEMPLATES_DIR=web/templates/
+   STATIC_DIR=web/static
    ```
 3. **Launch the Development Server**: Start the server using `npm run dev`.
 4. **Hot Reload**: Change the tailwind classes in `templates/landing.html` to see hot reload in action.
