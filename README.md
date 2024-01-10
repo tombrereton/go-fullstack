@@ -34,6 +34,11 @@ The server includes an integration test.
 - Execute tests using `go test ./...`.
 - Or using npm command `npm run test`
 
+### Docker
+
+1. **Build Image**: `npm run docker:build`
+2. **Run Image**: `npm run docker:run`
+
 ### Commands
 
 Full list of commands for `npm run` are:
