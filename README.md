@@ -12,7 +12,8 @@ Go Hot Reload is an open-source starter template, designed to streamline the dev
 - 🔥 **Hot Reloading**: Dynamic HTML updates with [`reload`](https://github.com/aarol/reload). Uses `concurrently` npm package for running `air` and `npx tailwind` together. Details in `package.json`.
 - 📄 **HTML Templates**: [`chi`](https://github.com/go-chi/chi) router for serving HTML templates.
 - 💅 **Tailwind**: CSS framework for responsive, customizable UI components with [Tailwind](https://tailwindcss.com/).
-- 🐳 **Docker Ready**: Dockerfile included for easy deployment and scalability. Includes multi-stage builds for efficient image size (approximately 18 MB).
+- 🐳 **Docker Ready**: Containerized environment for easy deployment and scalability. Includes multi-stage builds for efficient image size (approximately 18 MB).
+- 🚀 **HTMX**: Enhance your HTML with AJAX, WebSockets, and more using [HTMX](https://htmx.org/), enabling rich interactions with minimal JavaScript.
 
 ## Getting Started
 
