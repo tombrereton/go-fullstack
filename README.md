@@ -1,5 +1,7 @@
 # Go Hot Reload: A Go Web Application Template
 
+![Badge](https://github.com/tombrereton/go-hot-reload/actions/workflows/go.yaml/badge.svg)
+
 ## Introduction
 
 Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, HTML and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
