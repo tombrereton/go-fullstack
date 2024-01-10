@@ -1,15 +1,13 @@
 # Node.js stage for Tailwind CSS
 FROM node:latest as tailwindbuilder
 
-WORKDIR /web
+WORKDIR /node
 
-COPY static/ ./static/
-COPY templates/ ./templates/
+COPY web ./web
 COPY package*.json .
 COPY tailwind.config.js .
-RUN ls -l /web
 RUN npm install 
-RUN npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --minify
+RUN npx tailwindcss -i ./web/static/css/main.css -o ./web/static/css/styles.css --minify
 
 # Go build stage
 FROM golang:latest as gobuilder
@@ -25,14 +23,13 @@ FROM alpine:latest
 
 ENV PORT=3001 \
     IS_DEVELOPMENT=false \
-    TEMPLATES_DIR=templates/ \
-    STATIC_DIR=./static
+    TEMPLATES_DIR=web/templates/ \
+    STATIC_DIR=./web/static
 
 WORKDIR /root/
 
 COPY --from=gobuilder /app/cmd/web/main .
-COPY --from=tailwindbuilder /web/static/ ./static/
-COPY --from=tailwindbuilder /web/templates/ ./templates/
+COPY --from=tailwindbuilder /node/web/ ./web/
 
 EXPOSE 3001
 CMD ["./main"]
