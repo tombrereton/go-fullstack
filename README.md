@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Go Hot Reload is an open-source web application template using Go, designed to streamline the development process with hot reloading for HTML and Tailwind CSS. It's a perfect starting point for server side Go web development, particularly for those using `htmx`.
+Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, HTML and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
 
 ## Features
 
-- 🔄 **Live Reloading**: Automatic Go code rebuild using [`air`](https://github.com/cosmtrek/air). Configure in `.air.toml`.
+- 🔄 **Live Reloading**: Automatic Go rebuild using [`air`](https://github.com/cosmtrek/air). Configured in `.air.toml`.
 - 🔥 **Hot Reloading**: Dynamic HTML updates with [`reload`](https://github.com/aarol/reload). Uses `concurrently` npm package for running `air` and `npx tailwind` together. Details in `package.json`.
 - 📄 **HTML Templates**: [`chi`](https://github.com/go-chi/chi) router for serving HTML templates. 
 - 💅 **Tailwind**: CSS framework for responsive, customizable UI components with [Tailwind](https://tailwindcss.com/).
