@@ -19,6 +19,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
+	log.Default().Printf("Is Development mode enabled: %t", cfg.IsDevelopment)
 
 	server := server.NewWebServer(&cfg)
 	address := "localhost:" + cfg.Port

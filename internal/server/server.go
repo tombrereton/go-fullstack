@@ -2,6 +2,7 @@ package server
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/aarol/reload"
@@ -24,6 +25,7 @@ func NewWebServer(cfg *Config) *Server {
 	s.AddHtmlTemplatesToServer()
 
 	if s.Config.IsDevelopment {
+		log.Default().Println("Hot reloading enabled")
 		s.MountHotReload()
 	}
 	s.MountMiddleware()
