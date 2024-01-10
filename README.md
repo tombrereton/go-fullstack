@@ -55,7 +55,7 @@ Full list of commands for `npm run` are:
 
 ## Contributing to Go Hot Reload
 
-We welcome contributions from the community. Here are some guidelines to help you get started:
+Contributions from the community are welcome. Here are some guidelines to help you get started:
 
 1. **Fork the Repository**: Start by forking the repository to your GitHub account.
 2. **Clone Locally**: Clone your forked repository to your local machine.
