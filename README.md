@@ -8,7 +8,7 @@ Go Hot Reload is an open-source starter template, designed to streamline the dev
 
 - 🔄 **Live Reloading**: Automatic Go rebuild using [`air`](https://github.com/cosmtrek/air). Configured in `.air.toml`.
 - 🔥 **Hot Reloading**: Dynamic HTML updates with [`reload`](https://github.com/aarol/reload). Uses `concurrently` npm package for running `air` and `npx tailwind` together. Details in `package.json`.
-- 📄 **HTML Templates**: [`chi`](https://github.com/go-chi/chi) router for serving HTML templates. 
+- 📄 **HTML Templates**: [`chi`](https://github.com/go-chi/chi) router for serving HTML templates.
 - 💅 **Tailwind**: CSS framework for responsive, customizable UI components with [Tailwind](https://tailwindcss.com/).
 
 ## Getting Started
@@ -32,6 +32,20 @@ The server includes an integration test.
 
 - Execute tests using `go test ./...`.
 - Or using npm command `npm run test`
+
+### Commands
+
+Full list of commands for `npm run` are:
+
+```json
+"watch:tailwind": "npx tailwindcss -i ./static/css/main.css -o ./static/css/styles.css --watch",
+"watch:go": "air",
+"dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
+"test": "go test ./...",
+"docker:build": "docker build -f build/Dockerfile -t go-hot-reload .",
+"docker:run": "docker run --rm -p 3001:3001 --name go-hot-reload-container go-hot-reload",
+"docker:it": "docker run -it --rm go-hot-reload sh"
+```
 
 ## Contributing to Go Hot Reload
 
