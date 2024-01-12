@@ -2,17 +2,19 @@ package layout
 
 import "github.com/tombrereton/go-hot-reload/view/components"
 
-
 templ Base(contents templ.Component) {
 	<html>
 		<head>
 			<title>My Page</title>
+			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 		</head>
 		<body>
-            @components.Header()
+			@components.Header()
 			<h2>Layout</h2>
-			@contents
-            @components.Footer()
+			<main id="main">
+				@contents
+			</main>
+			@components.Footer()
 		</body>
 	</html>
 }

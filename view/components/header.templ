@@ -1,5 +1,17 @@
 package components
 
 templ Header() {
-    <h2>Header</h2>
+	<h2>Header</h2>
+	<button
+		hx-get="/"
+		hx-target="#main"
+		hx-swap="innerHTML"
+		type="button"
+	>Home</button>
+	<button
+		hx-get="/about"
+		hx-target="#main"
+		hx-swap="innerHTML"
+		type="button"
+	>About</button>
 }
