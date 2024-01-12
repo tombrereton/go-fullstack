@@ -3,7 +3,7 @@ package layout
 import "github.com/tombrereton/go-hot-reload/view/components"
 
 
-templ Base() {
+templ Base(contents templ.Component) {
 	<html>
 		<head>
 			<title>My Page</title>
@@ -11,7 +11,7 @@ templ Base() {
 		<body>
             @components.Header()
 			<h2>Layout</h2>
-			{ children... }
+			@contents
             @components.Footer()
 		</body>
 	</html>
