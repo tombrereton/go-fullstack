@@ -1,9 +1,12 @@
 package marketing
 
-import "github.com/tombrereton/go-hot-reload/view/layout"
+import (
+	"github.com/tombrereton/go-hot-reload/view/layout"
+	"github.com/tombrereton/go-hot-reload/model"
+)
 
-templ LandingPage() {
+templ LandingPage(user model.User) {
 	@layout.Base() {
-		<div>Hello, welcome to the landing page</div>
+		<div>Hello { user.Name }, welcome to the landing page</div>
 	}
 }

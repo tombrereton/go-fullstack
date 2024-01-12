@@ -1,13 +1,18 @@
 package layout
 
+import "github.com/tombrereton/go-hot-reload/view/components"
+
+
 templ Base() {
 	<html>
 		<head>
 			<title>My Page</title>
 		</head>
 		<body>
-			<h1>Layout</h1>
+            @components.Header()
+			<h2>Layout</h2>
 			{ children... }
+            @components.Footer()
 		</body>
 	</html>
 }
