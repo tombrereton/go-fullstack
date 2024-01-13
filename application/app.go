@@ -27,7 +27,6 @@ func (a *App) Start(ctx context.Context) error {
 	}
 
 	fmt.Printf("Starting server on http://localhost:%s\n", port)
-
 	ch := make(chan error, 1)
 	go func() {
 		err := server.ListenAndServe()
