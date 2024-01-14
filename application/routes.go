@@ -1,8 +1,6 @@
 package application
 
 import (
-	"net/http"
-
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/tombrereton/go-hot-reload/handler"
@@ -15,9 +13,7 @@ func loadRoutes() *chi.Mux {
 	r.Use(middleware.RequestID)
 
 	r.Route("/", marketingRoutes)
-	// r.Route("/static", staticRoutes)
-	fs := http.FileServer(http.Dir("static"))
-	r.Handle("/static/*", http.StripPrefix("/static/", fs))
+	r.Route("/static", staticRoutes)
 	return r
 }
 
@@ -29,6 +25,7 @@ func marketingRoutes(r chi.Router) {
 }
 
 func staticRoutes(r chi.Router) {
-	// staticHandler := &handler.Static{}
+	staticHandler := &handler.Static{}
 
+	r.Handle("/*", staticHandler.GetStaticFiles())
 }
