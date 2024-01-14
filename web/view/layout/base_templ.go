@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/tombrereton/go-hot-reload/view/components"
+import "github.com/tombrereton/go-hot-reload/web/view/components"
 
 func Base(contents templ.Component) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {

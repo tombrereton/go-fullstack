@@ -5,9 +5,9 @@ import (
 
 	"github.com/mavolin/go-htmx"
 
-	"github.com/tombrereton/go-hot-reload/model"
-	"github.com/tombrereton/go-hot-reload/view/layout"
-	"github.com/tombrereton/go-hot-reload/view/marketing"
+	"github.com/tombrereton/go-hot-reload/internal/model"
+	"github.com/tombrereton/go-hot-reload/web/view/layout"
+	"github.com/tombrereton/go-hot-reload/web/view/marketing"
 )
 
 type Marketing struct {

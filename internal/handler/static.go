@@ -12,7 +12,7 @@ type Static struct {
 func (h *Static) GetStaticFiles() *chi.Mux {
 	r := chi.NewRouter()
 
-	fs := http.FileServer(http.Dir("static"))
+	fs := http.FileServer(http.Dir("web/static"))
 	r.Handle("/*", http.StripPrefix("/static/", fs))
 
 	return r

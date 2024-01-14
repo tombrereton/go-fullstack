@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/tombrereton/go-hot-reload/application"
+	"github.com/tombrereton/go-hot-reload/internal/application"
 )
 
 func main() {
