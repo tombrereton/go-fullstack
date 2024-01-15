@@ -1,0 +1,22 @@
+package layout
+
+import "github.com/tombrereton/go-hot-reload/web/view/components"
+
+templ Base(contents templ.Component) {
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link href="/static/css/output.css" rel="stylesheet"/>
+			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+		</head>
+		<body class="border-2 border-slate-300 border-dashed p-4">
+			@components.Header()
+			<main id="main">
+				@contents
+			</main>
+			@components.Footer()
+		</body>
+	</html>
+}

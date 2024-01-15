@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "watch:tailwind": "npx tailwindcss -i ./web/static/css/main.css -o ./web/static/css/styles.css --watch",
+    "watch:tailwind": "npx tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --watch",
+    "watch:templ": "templ generate -path web/view  --watch --proxy='http://localhost:4000'",
     "watch:go": "air",
-    "dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
+    "dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\" \"npm run watch:templ\"",
     "test": "go test ./...",
     "docker:build": "docker build -f build/Dockerfile -t go-hot-reload .",
     "docker:run": "docker run --rm -p 3001:3001 --name go-hot-reload-container go-hot-reload",
