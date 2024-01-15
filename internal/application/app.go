@@ -8,25 +8,26 @@ import (
 )
 
 type App struct {
+	cfg    Configuration
 	router http.Handler
 }
 
-func NewApp() *App {
+func NewApp(c Configuration) *App {
 	app := &App{
 		router: loadRoutes(),
+		cfg:    c,
 	}
 
 	return app
 }
 
 func (a *App) Start(ctx context.Context) error {
-	port := "4000"
+	port := a.cfg.port
 	server := &http.Server{
 		Addr:    ":" + port,
 		Handler: a.router,
 	}
 
-	fmt.Printf("Starting server on http://localhost:%s\n", port)
 	ch := make(chan error, 1)
 	go func() {
 		err := server.ListenAndServe()
@@ -36,8 +37,9 @@ func (a *App) Start(ctx context.Context) error {
 		close(ch)
 	}()
 
+	fmt.Printf("Started server at http://localhost:%s\n", port)
 	select {
-	case err :=  <-ch:
+	case err := <-ch:
 		return err
 	case <-ctx.Done():
 		timeout, cancel := context.WithTimeout(context.Background(), time.Second*10)

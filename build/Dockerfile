@@ -21,10 +21,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 # Final stage
 FROM alpine:latest
 
-ENV PORT=3001 \
-    IS_DEVELOPMENT=false \
-    TEMPLATES_DIR=web/templates/ \
-    STATIC_DIR=./web/static
+ENV PORT=3001
 
 WORKDIR /root/
 

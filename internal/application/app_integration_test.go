@@ -9,7 +9,8 @@ import (
 )
 
 func TestApp_Start(t *testing.T) {
-	app := NewApp()
+	cfg := NewConfigurationBuilder().WithPort("7000").Build()
+	app := NewApp(cfg)
 
 	server := httptest.NewServer(app.router)
 	defer server.Close()
