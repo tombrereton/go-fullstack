@@ -26,3 +26,4 @@ tmp
 # node
 node_modules/
 **/styles.css
+**/output.css

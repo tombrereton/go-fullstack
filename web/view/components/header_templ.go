@@ -23,7 +23,7 @@ func Header() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-2 border-gray-400 border-dashed p-4 mb-2\"><button hx-get=\"/\" hx-target=\"#main\" hx-swap=\"innerHTML\" type=\"button\" class=\"border border-gray-400 px-2 py-1 rounded bg-slate-600 text-white\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-2 border-gray-400 border-dashed p-4 mb-2\"><button hx-get=\"/\" hx-target=\"#main\" hx-push-url=\"true\" hx-swap=\"innerHTML\" type=\"button\" class=\"border border-gray-400 px-2 py-1 rounded bg-slate-600 text-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -32,7 +32,7 @@ func Header() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button hx-get=\"/about\" hx-target=\"#main\" hx-swap=\"innerHTML\" type=\"button\" class=\"border border-gray-400 px-2 py-1 rounded bg-slate-600 text-white\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button id=\"about-link\" hx-get=\"/about\" hx-push-url=\"true\" hx-target=\"#main\" hx-swap=\"innerHTML\" type=\"button\" class=\"border border-gray-400 px-2 py-1 rounded bg-slate-600 text-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
