@@ -4,11 +4,10 @@
 
 ## Introduction
 
-Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, HTML and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
-
-Note: while it pushes changes to the browser it will reset the state, so it's not true hot reloading but it's close.
+Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, Templ (HTML), htmx and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
 
 ## Hosting
+
 I recommend hosting for free on https://fly.io/.
 
 The first 3 `shared-cpu-1x@256MB` VMs are free and you can deploy docker images easily.
@@ -16,8 +15,7 @@ The first 3 `shared-cpu-1x@256MB` VMs are free and you can deploy docker images 
 ## Features
 
 - 🔄 **Live Reloading**: Automatic Go rebuild using [`air`](https://github.com/cosmtrek/air). Configured in `.air.toml`.
-- 🔥 **Hot Reloading**: Dynamic HTML updates with [`reload`](https://github.com/aarol/reload). Uses `concurrently` npm package for running `air` and `npx tailwind` together. Details in `package.json`.
-- 📄 **HTML Templates**: [`chi`](https://github.com/go-chi/chi) router for serving HTML templates.
+- 📄 **Templ**: Templ is a component and typed html templating system - it plays nice with htmx.
 - 💅 **Tailwind**: CSS framework for responsive, customizable UI components with [Tailwind](https://tailwindcss.com/).
 - 🐳 **Docker Ready**: Containerized environment for easy deployment and scalability. Includes multi-stage builds for efficient image size (approximately 18 MB).
 - 🚀 **HTMX**: Enhance your HTML with AJAX, WebSockets, and more using [HTMX](https://htmx.org/), enabling rich interactions with minimal JavaScript.
@@ -29,10 +27,7 @@ The first 3 `shared-cpu-1x@256MB` VMs are free and you can deploy docker images 
 1. **Install npm Modules**: Run `npm install` to set up necessary modules.
 2. **Environment Configuration**: Create a `.env` file with the following content:
    ```
-   PORT=3000
-   IS_DEVELOPMENT=true
-   TEMPLATES_DIR=web/templates/
-   STATIC_DIR=web/static
+   PORT=4000
    ```
 3. **Launch the Development Server**: Start the server using `npm run dev`.
 4. **Hot Reload**: Change the tailwind classes in `templates/landing.html` to see hot reload in action.
@@ -54,9 +49,10 @@ The server includes an integration test.
 Full list of commands for `npm run` are:
 
 ```json
-"watch:tailwind": "npx tailwindcss -i ./web/static/css/main.css -o ./web/static/css/styles.css --watch",
+"watch:tailwind": "npx tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --watch",
+"watch:templ": "templ generate -path web/view  --watch --proxy='http://localhost:4000'",
 "watch:go": "air",
-"dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\"",
+"dev": "concurrently \"npm run watch:tailwind\" \"npm run watch:go\" \"npm run watch:templ\"",
 "test": "go test ./...",
 "docker:build": "docker build -f build/Dockerfile -t go-hot-reload .",
 "docker:run": "docker run --rm -p 3001:3001 --name go-hot-reload-container go-hot-reload",
