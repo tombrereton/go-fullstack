@@ -32,6 +32,49 @@ The first 3 `shared-cpu-1x@256MB` VMs are free and you can deploy docker images 
 3. **Launch the Development Server**: Start the server using `npm run dev`.
 4. **Hot Reload**: Change the tailwind classes in `templates/landing.html` to see hot reload in action.
 
+### For Windows Users
+
+1. Don't forget to create the .env file.
+
+2. Change the lines in `.air.toml`:
+
+   For Line 7, change:
+   ```
+   bin = "./tmp/main"
+   ```
+   to
+   ```
+   bin = "./tmp/main.exe"
+   ```
+
+   For Line 8, change:
+   ```
+   cmd = "go build -o ./tmp/main ./cmd/main.go" 
+   ```
+   to 
+   ```
+   cmd = "go build -o ./tmp/main.exe ./cmd/main.go"
+   ```
+
+3. In package.json, modify:
+
+   For line 4, change:
+   ```
+   "watch:templ": "templ generate -path web/view  --watch --proxy='http://localhost:4000'",
+   ```
+
+   To
+
+   ```
+   "watch:templ": "templ generate -path web/view  --watch --proxy=http://localhost:4000",
+   ```
+
+4. Upgrade the templ version:
+
+   ```
+   go get -u github.com/a-h/templ
+   ```
+
 ### Running Tests
 
 The server includes an integration test.
