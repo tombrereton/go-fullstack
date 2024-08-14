@@ -6,6 +6,16 @@
 
 Go Hot Reload is an open-source starter template, designed to streamline the development process with hot reloading for Go, Templ (HTML), htmx and Tailwind CSS. It's a perfect starting point for server side web development, particularly for those using `htmx`.
 
+## Motivation
+I want a starter project to quickly prototype ideas. Things that are important:
+- Good developer experience for running and testing locally
+- Zero config setup for running integration tests against datastore
+- Full offline local development support
+- True hot reloading i.e. the browser automatically refreshes when UI code is changed
+- Lightweight deployment artifact to maximise cheap or free hosting solutions
+- Integrates with cheap or free data storage solutions e.g. Supabase or Dynamo DB
+- Infrastructure as Code for free hosting solution
+
 ## Hosting
 
 I recommend hosting for free on https://fly.io/.
